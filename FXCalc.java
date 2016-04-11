@@ -178,6 +178,54 @@ public class FXCalc extends Application {
 		Scene scene = new Scene(allPane, HEIGHT, WIDTH);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		// add action >>set the action after the user presses
+		// 0
+		zero.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "0");
+		});
+		// 1
+		one.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "1");
+		});
+		// 2
+		two.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "2");
+		});
+		// 3
+		three.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "3");
+		});
+		// 4
+		four.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "4");
+		});
+		// 5
+		five.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "5");
+		});
+		// 6
+		six.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "6");
+		});
+		// 7
+		seven.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "7");
+		});
+		// 8
+		eight.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "8");
+		});
+		// 9
+		nine.setOnAction(e -> {
+			writingField.setText(writingField.getText() + "9");
+		});
+		// .
+		point.setOnAction(e -> {
+			writingField.setText(writingField.getText() + ".");
+		});
+		
+		
 
 
 	}
