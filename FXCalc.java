@@ -1,3 +1,9 @@
+
+//U10416022 
+import javafx.application.Application;
+import javafx.geometry.*;
+import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.MenuBar;
@@ -10,7 +16,8 @@ import javafx.event.*;
 import javafx.util.*;
 
 public class FXCalc extends Application {
-	
+	boolean[] operator = new boolean[4];
+	double value = 0;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -142,6 +149,7 @@ public class FXCalc extends Application {
 		allPane.getChildren().addAll(menubar, writingField, MPane, mainPane);
 		// set padding for border
 		allPane.setPadding(new Insets(0, 20, 20, 20));
+
 		// set buttons and place buttons in the mainPane
 		mainPane.setVgap(2);
 		mainPane.setHgap(2);
@@ -178,7 +186,7 @@ public class FXCalc extends Application {
 		Scene scene = new Scene(allPane, HEIGHT, WIDTH);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		
+
 		// add action >>set the action after the user presses
 		// 0
 		zero.setOnAction(e -> {
@@ -239,14 +247,13 @@ public class FXCalc extends Application {
 		// square root
 		symbol3.setOnAction(e -> {
 			double root;
-			// Create a variable for value, and use Math's square root to find
-			// value
+			// Create a variable for value, and use Math's square root to find value
 			root = Math.sqrt(Double.parseDouble(writingField.getText()));
 			writingField.setText(Double.toString(root));
 		});
 		// +/-
 		symbol2.setOnAction(e -> {
-			// create a variable for our current value
+			// create a variable for our current value and then*-1
 			double arg;
 			arg = Double.parseDouble(writingField.getText());
 
@@ -257,9 +264,73 @@ public class FXCalc extends Application {
 
 		});
 
-		
-		
+		// plus
+		symbol10.setOnAction(e -> {
+				value = Double.parseDouble(writingField.getText());
+				writingField.setText("");
+				operator[0] = true;
+				operator[1] = false;
+				operator[2] = false;
+				operator[3] = false;
 
+			
+		});
+
+		// subtraction
+		symbol8.setOnAction(e -> {
+
+			value = Double.parseDouble(writingField.getText());
+			writingField.setText("");
+			operator[1] = true;
+			operator[0] = false;
+			operator[2] = false;
+			operator[3] = false;
+
+		});
+
+		// multiplication
+		symbol6.setOnAction(e -> {
+
+			value = Double.parseDouble(writingField.getText());
+			writingField.setText("");
+			operator[2] = true;
+			operator[1] = false;
+			operator[0] = false;
+			operator[3] = false;
+
+		});
+
+		// division
+		symbol4.setOnAction(e -> {
+
+			value = Double.parseDouble(writingField.getText());
+			writingField.setText("");
+			operator[3] = true;
+			operator[1] = false;
+			operator[2] = false;
+			operator[0] = false;
+
+		});
+
+		symbol9.setOnAction(e -> {
+			double equ = Double.parseDouble(writingField.getText());
+
+			if (operator[0] == true) {
+				value += equ;
+				writingField.setText(Double.toString(value));
+
+			} else if (operator[1] == true) {
+				value -= equ;
+				writingField.setText(Double.toString(value));
+			} else if (operator[2] == true) {
+				value *= equ;
+				writingField.setText(Double.toString(value));
+			} else if (operator[3] == true) {
+				value /= equ;
+				writingField.setText(Double.toString(value));
+			}
+
+		});
 
 	}
 
