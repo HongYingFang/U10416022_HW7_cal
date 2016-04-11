@@ -224,6 +224,39 @@ public class FXCalc extends Application {
 		point.setOnAction(e -> {
 			writingField.setText(writingField.getText() + ".");
 		});
+		// C
+		C.setOnAction(e -> {
+			writingField.setText("");
+		});
+		// delete
+		symbol1.setOnAction(e -> {
+			if (writingField.getText().length() > 0) {
+				String tem = writingField.getText();
+				String t = tem.substring(0, tem.length() - 1);
+				writingField.setText(t);
+			}
+		});
+		// square root
+		symbol3.setOnAction(e -> {
+			double root;
+			// Create a variable for value, and use Math's square root to find
+			// value
+			root = Math.sqrt(Double.parseDouble(writingField.getText()));
+			writingField.setText(Double.toString(root));
+		});
+		// +/-
+		symbol2.setOnAction(e -> {
+			// create a variable for our current value
+			double arg;
+			arg = Double.parseDouble(writingField.getText());
+
+			if (arg != 0) {
+				arg = arg * (-1);
+				writingField.setText(Double.toString(arg));
+			}
+
+		});
+
 		
 		
 
